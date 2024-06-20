@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+
     GifsModule,
     SharedModule
   ],

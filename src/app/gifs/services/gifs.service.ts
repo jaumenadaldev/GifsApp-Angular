@@ -14,6 +14,8 @@ export class GifsService {
 
   constructor( private http: HttpClient ) {
     this.loadLocalStorage();
+    console.log('Gifs service initialized');
+
    }
 
   get tagsHistory(){
@@ -24,7 +26,7 @@ export class GifsService {
     tag = tag.toLowerCase();
 
     if( this._tagsHistory.includes( tag ) ){
-      this._tagsHistory = this._tagsHistory.filter( oldTag => oldTag !== tag );
+      this._tagsHistory = this._tagsHistory.filter( (oldTag) => oldTag !== tag );
     }
 
     this._tagsHistory.unshift( tag );
@@ -32,11 +34,11 @@ export class GifsService {
     this.saveLocalStorage();
   }
 
-  private saveLocalStorage(){
+  private saveLocalStorage(): void{
     localStorage.setItem('history', JSON.stringify( this._tagsHistory ));
   }
 
-  private loadLocalStorage(){
+  private loadLocalStorage(): void{
     if( !localStorage.getItem('history')) return;
 
     this._tagsHistory = JSON.parse( localStorage.getItem('history')! );
